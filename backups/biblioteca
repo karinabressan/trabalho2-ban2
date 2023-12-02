@@ -1,0 +1,398 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 15.4
+-- Dumped by pg_dump version 15.4
+
+-- Started on 2023-09-27 12:32:51
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 217 (class 1259 OID 32793)
+-- Name: autor; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.autor (
+    codautor integer NOT NULL,
+    nomeautor character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.autor OWNER TO postgres;
+
+--
+-- TOC entry 214 (class 1259 OID 24608)
+-- Name: cliente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.cliente (
+    id integer NOT NULL,
+    nome character varying(255) NOT NULL,
+    email character varying(255),
+    telefone character varying(20),
+    endereco character varying(255)
+);
+
+
+ALTER TABLE public.cliente OWNER TO postgres;
+
+--
+-- TOC entry 216 (class 1259 OID 32783)
+-- Name: editora; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.editora (
+    codeditora integer NOT NULL,
+    nomeeditora character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.editora OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 32818)
+-- Name: emprestimo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.emprestimo (
+    codemprestimo integer NOT NULL,
+    codlivro integer,
+    codcliente integer,
+    data_emprestimo date,
+    data_devolucao_real date,
+    dias integer
+);
+
+
+ALTER TABLE public.emprestimo OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1259 OID 32778)
+-- Name: genero; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.genero (
+    codgenero integer NOT NULL,
+    nomegenero character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.genero OWNER TO postgres;
+
+--
+-- TOC entry 218 (class 1259 OID 32798)
+-- Name: livros; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.livros (
+    codlivro integer NOT NULL,
+    titulo character varying(200) NOT NULL,
+    codautor integer,
+    codeditora integer,
+    codgenero integer,
+    quantidade integer
+);
+
+
+ALTER TABLE public.livros OWNER TO postgres;
+
+--
+-- TOC entry 3354 (class 0 OID 32793)
+-- Dependencies: 217
+-- Data for Name: autor; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.autor (codautor, nomeautor) FROM stdin;
+1	João Silva
+2	Maria Santos
+3	Carlos Ferreira
+4	Ana Rodrigues
+5	Pedro Almeida
+6	Sofia Mendes
+7	Luis Torres
+8	Marta Fernandes
+9	Ricardo Pereira
+10	Laura Alves
+11	Daniel Oliveira
+12	Carla Sousa
+13	Antonio Rodrigues
+14	Isabel Silva
+15	Gustavo Martins
+\.
+
+
+--
+-- TOC entry 3351 (class 0 OID 24608)
+-- Dependencies: 214
+-- Data for Name: cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.cliente (id, nome, email, telefone, endereco) FROM stdin;
+1	João Silva	joao.silva@example.com	123-456-7890	123 Rua das Flores
+2	Maria Santos	maria.santos@example.com	987-654-3210	456 Avenida Principal
+3	Carlos Ferreira	carlos.ferreira@example.com	555-123-4567	789 Rua da Praia
+4	Ana Rodrigues	ana.rodrigues@example.com	111-222-3333	321 Rua do Sol
+5	Pedro Almeida	pedro.almeida@example.com	999-888-7777	654 Avenida da Lua
+6	Sofia Mendes	sofia.mendes@example.com	444-555-6666	987 Rua da Montanha
+7	Luis Torres	luis.torres@example.com	777-888-9999	789 Avenida das Estrelas
+8	Marta Fernandes	marta.fernandes@example.com	222-333-4444	555 Rua do Oceano
+9	Ricardo Pereira	ricardo.pereira@example.com	666-777-8888	111 Avenida dos Ventos
+10	Laura Alves	laura.alves@example.com	333-444-5555	222 Rua da Cidade
+11	Daniel Oliveira	daniel.oliveira@example.com	444-555-6666	987 Rua da Colina
+12	Carla Sousa	carla.sousa@example.com	555-666-7777	654 Avenida do Rio
+13	Antonio Rodrigues	antonio.rodrigues@example.com	999-888-7777	111 Rua da Montanha
+14	Isabel Silva	isabel.silva@example.com	123-456-7890	789 Rua da Praia
+15	Gustavo Martins	gustavo.martins@example.com	987-654-3210	123 Rua das Flores
+\.
+
+
+--
+-- TOC entry 3353 (class 0 OID 32783)
+-- Dependencies: 216
+-- Data for Name: editora; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.editora (codeditora, nomeeditora) FROM stdin;
+1	Editora Monaco
+2	Editora Brasil
+3	Editora Livros & Cia
+4	Editora Moderna
+5	Editora Literatura Universal
+6	Editora Reflexão Editores
+7	Editora Enigma Press
+8	Editora Exploradores Editora
+9	Editora Versos Livres
+10	Editora Magia Publicações
+11	Editora Bem-Estar Editora
+12	Editora Futura Edições
+13	Editora Intriga Livros
+14	Editora Autoconhecimento Livros
+15	Editora Paixão Editora
+\.
+
+
+--
+-- TOC entry 3356 (class 0 OID 32818)
+-- Dependencies: 219
+-- Data for Name: emprestimo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.emprestimo (codemprestimo, codlivro, codcliente, data_emprestimo, data_devolucao_real, dias) FROM stdin;
+1	7	10	2023-07-29	2023-06-07	13
+2	8	5	2023-02-03	2023-04-15	20
+3	18	10	2023-05-29	\N	27
+4	16	3	2023-08-30	\N	26
+5	15	12	2023-06-29	2023-03-23	24
+6	22	1	2023-02-17	2023-08-26	11
+7	26	5	2023-05-14	\N	28
+8	8	4	2023-07-17	\N	13
+9	2	1	2023-09-12	2023-07-28	23
+10	5	8	2023-05-23	\N	11
+11	21	1	2023-06-18	2023-05-21	18
+12	4	13	2023-04-10	2023-03-06	29
+13	29	11	2023-05-28	\N	25
+14	18	7	2023-07-26	2023-04-30	14
+15	16	8	2023-08-11	2023-07-12	18
+16	25	2	2023-06-16	\N	24
+17	22	4	2023-04-26	\N	5
+18	19	12	2023-01-10	\N	9
+19	11	5	2023-07-06	2023-08-05	9
+20	21	11	2023-09-22	\N	19
+21	22	4	2023-02-20	2023-02-18	20
+22	26	14	2023-08-03	2023-04-30	27
+23	8	15	2023-06-07	2023-05-16	13
+24	16	3	2023-04-27	\N	7
+25	11	10	2023-04-29	2023-09-15	28
+26	4	12	2023-06-08	2023-04-28	15
+27	20	8	2023-04-26	\N	21
+28	14	10	2023-01-01	\N	6
+29	2	7	2023-07-30	\N	18
+30	16	1	2023-07-21	2023-05-17	4
+\.
+
+
+--
+-- TOC entry 3352 (class 0 OID 32778)
+-- Dependencies: 215
+-- Data for Name: genero; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.genero (codgenero, nomegenero) FROM stdin;
+1	Romance
+2	Ficção
+3	Autoajuda
+4	Mistério
+5	Aventura
+6	Poesia
+7	Fantasia
+8	Suspense
+9	Ficção Científica
+10	Drama
+11	História
+12	Biografia
+13	Não Ficção
+14	Autoconhecimento
+15	Clássico
+\.
+
+
+--
+-- TOC entry 3355 (class 0 OID 32798)
+-- Dependencies: 218
+-- Data for Name: livros; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.livros (codlivro, titulo, codautor, codeditora, codgenero, quantidade) FROM stdin;
+1	O Segredo do Destino	10	9	15	2
+2	A Jornada do Herói	5	13	1	4
+3	Poesias do Amor	5	1	14	4
+4	O Mistério da Noite	8	5	15	3
+5	Aventuras Perdidas	8	3	15	2
+6	Segredos do Passado	2	13	4	2
+7	O Poder da Imaginação	6	5	15	10
+8	O Enigma do Tempo	12	6	4	10
+9	Romance Proibido	7	4	15	10
+10	A Magia da Natureza	9	13	8	6
+11	A Sombra do Passado	9	15	13	9
+12	O Enigma do Espaço	13	4	15	6
+13	Caminho para a Liberdade	3	7	7	1
+14	A Última Viagem	5	4	12	1
+15	O Código Secreto	11	10	2	1
+16	Caminho para a Sabedoria	3	6	12	1
+17	Mistérios do Universo	10	13	15	10
+18	A Arte da Felicidade	9	3	11	2
+19	O Universo Desconhecido	15	6	10	8
+20	O Amor Proibido	12	8	10	6
+21	A Magia do Mundo	11	15	10	9
+22	Versos da Vida	15	2	11	8
+23	A Busca pelo Tesouro	1	2	7	6
+24	A Sombra do Passado	9	6	1	1
+25	A Arte da Felicidade	10	11	12	9
+26	Mistérios do Universo	5	12	5	4
+27	O Enigma da Noite	5	5	3	6
+28	Caminho da Serenidade	15	8	14	2
+29	A Busca pelo Conhecimento	2	11	11	1
+30	Segredos do Passado	6	12	4	6
+\.
+
+
+--
+-- TOC entry 3199 (class 2606 OID 32797)
+-- Name: autor autor_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.autor
+    ADD CONSTRAINT autor_pkey PRIMARY KEY (codautor);
+
+
+--
+-- TOC entry 3193 (class 2606 OID 24614)
+-- Name: cliente cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente
+    ADD CONSTRAINT cliente_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3197 (class 2606 OID 32787)
+-- Name: editora editora_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.editora
+    ADD CONSTRAINT editora_pkey PRIMARY KEY (codeditora);
+
+
+--
+-- TOC entry 3203 (class 2606 OID 32822)
+-- Name: emprestimo emprestimo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.emprestimo
+    ADD CONSTRAINT emprestimo_pkey PRIMARY KEY (codemprestimo);
+
+
+--
+-- TOC entry 3195 (class 2606 OID 32782)
+-- Name: genero genero_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.genero
+    ADD CONSTRAINT genero_pkey PRIMARY KEY (codgenero);
+
+
+--
+-- TOC entry 3201 (class 2606 OID 32802)
+-- Name: livros livros_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.livros
+    ADD CONSTRAINT livros_pkey PRIMARY KEY (codlivro);
+
+
+--
+-- TOC entry 3207 (class 2606 OID 32828)
+-- Name: emprestimo emprestimo_codcliente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.emprestimo
+    ADD CONSTRAINT emprestimo_codcliente_fkey FOREIGN KEY (codcliente) REFERENCES public.cliente(id);
+
+
+--
+-- TOC entry 3208 (class 2606 OID 32823)
+-- Name: emprestimo emprestimo_codlivro_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.emprestimo
+    ADD CONSTRAINT emprestimo_codlivro_fkey FOREIGN KEY (codlivro) REFERENCES public.livros(codlivro);
+
+
+--
+-- TOC entry 3204 (class 2606 OID 32803)
+-- Name: livros livros_codautor_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.livros
+    ADD CONSTRAINT livros_codautor_fkey FOREIGN KEY (codautor) REFERENCES public.autor(codautor);
+
+
+--
+-- TOC entry 3205 (class 2606 OID 32808)
+-- Name: livros livros_codeditora_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.livros
+    ADD CONSTRAINT livros_codeditora_fkey FOREIGN KEY (codeditora) REFERENCES public.editora(codeditora);
+
+
+--
+-- TOC entry 3206 (class 2606 OID 32813)
+-- Name: livros livros_codgenero_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.livros
+    ADD CONSTRAINT livros_codgenero_fkey FOREIGN KEY (codgenero) REFERENCES public.genero(codgenero);
+
+
+-- Completed on 2023-09-27 12:32:51
+
+--
+-- PostgreSQL database dump complete
+--
+
