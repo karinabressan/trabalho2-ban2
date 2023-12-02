@@ -3,9 +3,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +10,7 @@ import java.sql.SQLException;
 
 
 public class date {
-        public static Date datateclado() {
+        public static Date dataTeclado() {
         Date data1 = new Date();
         String dataString = new String();
         Scanner scanner = new Scanner(System.in);

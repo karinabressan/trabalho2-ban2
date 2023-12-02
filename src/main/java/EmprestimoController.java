@@ -21,7 +21,7 @@ public class EmprestimoController {
         System.out.print("Quantos dias ficara com o livro: ");
         int dias = Integer.parseInt(input.nextLine());
         System.out.print("Data do emprestimo ");
-        Date dataemprestimo = date.datateclado();
+        Date dataemprestimo = date.dataTeclado();
         EmprestimoBean mb = new EmprestimoBean(codemprestimo,codcliente,codlivro,dataemprestimo,dias,dataemprestimo );
         EmprestimoModel.create(mb, con);
         System.out.println("Empréstimo adicionado com sucesso!!");
@@ -48,7 +48,7 @@ public class EmprestimoController {
         System.out.print("Dias que ficará com o livro ");
         int dias = Integer.parseInt(input.nextLine());
         System.out.print("Data Emprestimo");
-        Date dataemprestimo = date.datateclado();
+        Date dataemprestimo = date.dataTeclado();
 
         
         
@@ -93,7 +93,7 @@ public class EmprestimoController {
                     return;
                 }
                 System.out.println("Data devolução: (dd/mm/yyyy)");
-                Date datadev = date.datateclado();
+                Date datadev = date.dataTeclado();
                 Date dataDevReal = datadev;
                 java.sql.Date sqlDataDevReal = new java.sql.Date(dataDevReal.getTime());
                 EmprestimoModel.devolucao1(codemprestimo, sqlDataDevReal, con);
@@ -116,7 +116,7 @@ public class EmprestimoController {
                     return;
                 }  
                 System.out.println("Data devolução: (dd/mm/yyyy)");
-                Date datadev2 = date.datateclado();
+                Date datadev2 = date.dataTeclado();
                 Date dataDevReal2 = datadev2;
                 java.sql.Date sqlDataDevReal2 = new java.sql.Date(dataDevReal2.getTime());
                 EmprestimoModel.devolucao2(codlivro, codcliente,sqlDataDevReal2, con);

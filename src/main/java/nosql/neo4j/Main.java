@@ -1,6 +1,5 @@
 package nosql.neo4j;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -8,12 +7,12 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
         Conexao c = new Conexao();
-        try (Connection con = c.getConnection()) {
-            int op = 0;
-            do {
-                op = menu();
-                try {
-                    switch (op) {
+
+        int op = 0;
+        do {
+            op = menu();
+            try {
+                switch (op) {
 //                    case 1: //Livro
 //                        op = menu2();
 //                        switch (op){
@@ -40,23 +39,23 @@ public class Main {
 //                                break;
 //                        }
 //                        break;
-                        case 3: // Genero
-                            op = menu2();
-                            switch (op) {
-                                case 1:
-                                    new GeneroController().createGenero(con); //incluir
-                                    break;
-                                case 2:
-                                    new GeneroController().updateGenero(con);// alterar
-                                    break;
-                                case 3:
-                                    new GeneroController().listarGenero(con);// visualizar
-                                    break;
-                                case 4:
-                                    new GeneroController().deleteGenero(con);// deletar
-                                    break;
-                            }
-                            break;
+                    case 3: // Genero
+                        op = menu2();
+                        switch (op) {
+                            case 1:
+                                new GeneroController().createGenero(); //incluir
+                                break;
+                            case 2:
+                                new GeneroController().updateGenero();// alterar
+                                break;
+                            case 3:
+                                new GeneroController().listarGenero(c);// visualizar
+                                break;
+                            case 4:
+                                new GeneroController().deleteGenero();// deletar
+                                break;
+                        }
+                        break;
 //                    case 4: // Cliente
 //                        op = menu2();
 //                        switch (op){
@@ -106,14 +105,14 @@ public class Main {
 //                            case 3: new Relatorio3Controller().relatoriolivro(con);
 //                                break;
 //                        }
-                    }
-                } catch (SQLException ex) {
-                    //ex.printStackTrace();
-                    System.out.println(ex.getMessage());
-                    continue;
                 }
-            } while (op >= 0 && op < 9);
-        }
+            } catch (SQLException ex) {
+                //ex.printStackTrace();
+                System.out.println(ex.getMessage());
+                continue;
+            }
+        } while (op >= 0 && op < 9);
+
     }
 
     private static int menu() {
