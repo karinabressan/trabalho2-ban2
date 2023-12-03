@@ -1,5 +1,7 @@
 package nosql.neo4j;
 
+import org.neo4j.driver.Record;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -38,23 +40,9 @@ public class date {
         return data1;
     }
 
-    public static int sugerecodigo(String campo, String tabela, Connection con) throws SQLException {
-        return 1;
-        // TODO - Refatorar para neo4j
-//            int codigo = 0;
-//        String query = "SELECT MAX("+campo+") FROM "+tabela+" ";
-//
-//        try (PreparedStatement statement = con.prepareStatement(query)) {
-//
-//            try (ResultSet resultSet = statement.executeQuery()) {
-//                if (resultSet.next()) {
-//                    codigo = resultSet.getInt(1);
-//                    return codigo + 1;
-//                }
-//            }
-//        }
-//
-//        return codigo;
+    public static int sugerecodigo(String campo, String tabela, Conexao con) throws SQLException {
+        Record max = con.getExecutableQuery("MATCH(x:"+tabela+") return max(x."+campo+")").execute().records().get(0);
+        return max.get(0).asInt()+1;
     }
 
 }

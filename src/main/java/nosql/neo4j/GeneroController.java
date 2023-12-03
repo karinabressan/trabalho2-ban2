@@ -1,68 +1,86 @@
 package nosql.neo4j;
 
-import java.sql.Connection;
+import org.neo4j.driver.exceptions.ClientException;
+
 import java.sql.SQLException;
-import java.util.*;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 
 public class GeneroController {
-    
-    public void createGenero() throws SQLException {
+
+    public void createGenero(Conexao con) throws SQLException {
         Scanner input = new Scanner(System.in);
-//        int sugestao = date.sugerecodigo("codgenero","genero", con);
-        int sugestao = -1;
-        System.out.println("Insira os seguintes dados para adicionar um novo Genero: sugestão("+sugestao+") ");
+        int sugestao = date.sugerecodigo("codgenero", "Genero", con);
+        System.out.println("Insira os seguintes dados para adicionar um novo Genero: sugestão(" + sugestao + ") ");
         System.out.print("Codigo da Genero: ");
-        int codgenero = input.nextInt();
+        int codigoGenero = input.nextInt();
         System.out.print("genero: ");
-        String nomegenero = input.next();
-        GeneroBean gb = new GeneroBean(codgenero, nomegenero);
-//        GeneroModel.create(gb, con);
+        input = new Scanner(System.in);
+        String nomeGenero = input.nextLine();
+        GeneroBean gb = new GeneroBean(codigoGenero, nomeGenero);
+        GeneroModel.create(gb, con);
         System.out.println("Genero adicionada com sucesso!!");
     }
- 
+
     void listarGenero(Conexao con) throws SQLException {
         List<Map<String, Object>> all = GeneroModel.listAll(con);
         Iterator<Map<String, Object>> it = all.iterator();
-        while(it.hasNext()) {
-            System.out.println(it.next().toString());
+        System.out.println("Codigo do genero; Nome do genero");
+        while (it.hasNext()) {
+            var next = it.next();
+            Map<String, Object> genero = (Map)next.get("genero");
+            String nomeGenero = (String) genero.get("nomegenero");
+            Long codigoGenero = (Long) genero.get("codgenero");
+
+            System.out.println(codigoGenero+";"+nomeGenero);
         }
     }
-    public void updateGenero() throws SQLException {
+
+    public void updateGenero(Conexao conexao) throws SQLException {
         Scanner input = new Scanner(System.in);
 
         System.out.print("Digite o código do genero que deseja atualizar: ");
         int codgenero = input.nextInt();
 
-        // Verifica se o genero existe no banco de dados antes de prosseguir
-//        if (!GeneroModel.exists(codgenero, con)) {
-//            System.out.println("Genero não encontrado no banco de dados.");
-//            return;
-//        }
-
         System.out.println("Insira os novos dados para atualizar o Genero: ");
         System.out.print("Novo nome genero: ");
-        String novoNome = input.next();
+        input = new Scanner(System.in);
+        String novoNome = input.nextLine();
 
 
         GeneroBean novoGenero = new GeneroBean(codgenero, novoNome);
 
-//        GeneroModel.update(novoGenero, con);
-        System.out.println("Genero atualizado com sucesso!!");
-}
-    
-    public void deleteGenero() throws SQLException {
+        int amountUpdated = GeneroModel.update(novoGenero, conexao);
+        if (amountUpdated > 0) {
+            System.out.println("Genero atualizado com sucesso!");
+        } else {
+            System.out.println("Nenhum genero encontrado com o código especificado.");
+        }
+    }
+
+    public void deleteGenero(Conexao conexao) throws ClientException {
         Scanner input = new Scanner(System.in);
 
         System.out.print("Digite o código do Genero que deseja excluir: ");
-        int codgenero = input.nextInt();
+        int codigoGenero = input.nextInt();
 
-        // Verifica se a genero existe no banco de dados antes de prosseguir
-//        if (!GeneroModel.exists(codgenero, con)) {
-//            System.out.println("Genero não encontrado no banco de dados.");
-//            return;
-//        }
+        try {
+            int amountDeleted = GeneroModel.delete(codigoGenero, conexao);
+            if (amountDeleted > 0) {
+                System.out.println("Genero excluido com sucesso!");
+            } else {
+                System.out.println("Nenhum genero encontrado com o código especificado.");
+            }
+        } catch (ClientException e) {
+            if (e.code().equals("Neo.ClientError.Schema.ConstraintValidationFailed")) {
+                System.out.println("Este genero esta sendo utilizado e não pode ser excluido");
+            } else {
+                throw e;
+            }
+        }
 
-//        GeneroModel.delete(codgenero, con);
     }
 }

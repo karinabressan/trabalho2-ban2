@@ -1,12 +1,13 @@
 package nosql.neo4j;
 
 import java.sql.SQLException;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-        Conexao c = new Conexao();
+        Conexao conexao = new Conexao();
 
         int op = 0;
         do {
@@ -43,16 +44,16 @@ public class Main {
                         op = menu2();
                         switch (op) {
                             case 1:
-                                new GeneroController().createGenero(); //incluir
+                                new GeneroController().createGenero(conexao); //incluir 2
                                 break;
                             case 2:
-                                new GeneroController().updateGenero();// alterar
+                                new GeneroController().updateGenero(conexao);// alterar 4
                                 break;
                             case 3:
-                                new GeneroController().listarGenero(c);// visualizar
+                                new GeneroController().listarGenero(conexao);// visualizar 1
                                 break;
                             case 4:
-                                new GeneroController().deleteGenero();// deletar
+                                new GeneroController().deleteGenero(conexao);// deletar 3
                                 break;
                         }
                         break;
@@ -69,18 +70,18 @@ public class Main {
 //                                break;
 //                        }
 //                        break;
-//                    case 5: //Autor
-//                        op = menu2();
-//                        switch (op){
-//                            case 1: new AutorController().createAutor(con); //incluir
-//                                break;
-//                            case 2: new AutorController().updateAutor(con);// alterar
-//                                break;
-//                            case 3: new AutorController().listarAutor(con);// visualizar
-//                                break;
-//                            case 4: new AutorController().deleteAutor(con);// deletar
-//                                break;
-//                        }
+                    case 5: //Autor
+                        op = menu2();
+                        switch (op){
+                            case 1: new AutorController().createAutor(conexao); //incluir
+                                break;
+                            case 2: new AutorController().updateAutor(conexao);// alterar
+                                break;
+                            case 3: new AutorController().listarAutor(conexao);// visualizar
+                                break;
+                            case 4: new AutorController().deleteAutor(conexao);// deletar
+                                break;
+                        }
 //                    case 6: //Emprestimo
 //                        op = menuEmprestimo();
 //                        switch (op){
@@ -123,7 +124,7 @@ public class Main {
 //        System.out.println("2 - Editora");
         System.out.println("3 - Genero");
 //        System.out.println("4 - Clientes");
-//        System.out.println("5 - Autor");
+        System.out.println("5 - Autor");
 //        System.out.println("6 - Empréstimos");
 //        System.out.println("7 - Relatórios");
         System.out.println("Digite qualquer outro valor para sair");

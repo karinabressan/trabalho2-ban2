@@ -1,5 +1,8 @@
 package nosql.neo4j;
 
+import org.neo4j.driver.EagerResult;
+import org.neo4j.driver.Result;
+
 import java.sql.*;
 import java.util.HashSet;
 import java.util.List;
@@ -7,63 +10,36 @@ import java.util.Map;
 
 public class GeneroModel {
 
-    public static void create(GeneroBean a, Connection con) throws SQLException {
-        PreparedStatement st;
-        st = con.prepareStatement("INSERT INTO genero (codgenero, nomegenero) VALUES (?,?)");
-        st.setInt(1, a.getCodGenero());
-        st.setString(2, a.getNomeGenero());
-        st.execute();
-        st.close();
+    public static void create(GeneroBean genero, Conexao con) {
+        con.getExecutableQuery("""
+                CREATE(g:Genero {codgenero: $codgenero, nomegenero: $nomegenero})
+                """).withParameters(Map.of("codgenero",genero.getCodGenero()+0, "nomegenero", genero.getNomeGenero())).execute();
     }
 
-    public static List<Map<String,Object>> listAll(Conexao con) throws SQLException {
+    public static List<Map<String,Object>> listAll(Conexao con) {
        return con.query("""
-                MATCH (g:Genero) return g;
+                MATCH (genero:Genero) return genero;
                 """);
     }
 
-    public static void delete(int codgenero, Connection con) throws SQLException {
+    public static int delete(int codigoGenero, Conexao con) {
+        EagerResult result = con.getExecutableQuery("""
+                MATCH (g:Genero) 
+                WHERE g.codgenero = $codgenero
+                DELETE g
+                RETURN g
+                """).withParameters(Map.of("codgenero",codigoGenero)).execute();
+        return result.records().size();
 
-        String query = "DELETE FROM genero WHERE codgenero = ?";
-
-        try (PreparedStatement statement = con.prepareStatement(query)) {
-            statement.setInt(1, codgenero);
-
-            int rowsDeleted = statement.executeUpdate();
-
-            if (rowsDeleted > 0) {
-                System.out.println("Genero excluido com sucesso!");
-            } else {
-                System.out.println("Nenhum genero encontrado com o código especificado.");
-            }
-        }
     }
 
-    public static boolean exists(int codgenero, Connection con) throws SQLException {
-        String query = "SELECT COUNT(*) FROM genero WHERE codgenero = ?";
-
-        try (PreparedStatement statement = con.prepareStatement(query)) {
-            statement.setInt(1, codgenero);
-
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    int count = resultSet.getInt(1);
-                    return count > 0;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    public static void update(GeneroBean novoGenero, Connection con) throws SQLException {
-        String query = "UPDATE genero SET nomegenero = ? WHERE codgenero = ?";
-
-        try (PreparedStatement statement = con.prepareStatement(query)) {
-            statement.setString(1, novoGenero.getNomeGenero());
-            statement.setInt(2, novoGenero.getCodGenero());
-
-            statement.executeUpdate();
-        }
+    public static int update(GeneroBean novoGenero, Conexao con) {
+        EagerResult result = con.getExecutableQuery("""
+                MATCH(g:Genero)
+                WHERE g.codgenero = $codgenero
+                SET g.nomegenero = $nomegenero
+                RETURN g
+                """).withParameters(Map.of("codgenero", novoGenero.getCodGenero()+0, "nomegenero", novoGenero.getNomeGenero())).execute();
+        return result.records().size();
     }
 }
