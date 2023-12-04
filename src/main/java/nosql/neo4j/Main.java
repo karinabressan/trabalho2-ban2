@@ -27,19 +27,19 @@ public class Main {
 //                                break;
 //                        }
 //                        break;
-//                    case 2:// Editora
-//                        op = menu2();
-//                        switch (op){
-//                            case 1: new EditoraController().createEditora(con); //incluir
-//                                break;
-//                            case 2: new EditoraController().updateEditora(con);// alterar
-//                                break;
-//                            case 3: new EditoraController().listarEditora(con);// visualizar
-//                                break;
-//                            case 4: new EditoraController().deleteEditora(con);// deletar
-//                                break;
-//                        }
-//                        break;
+                    case 2:// Editora
+                        op = menu2();
+                        switch (op){
+                            case 1: new EditoraController().createEditora(conexao); //incluir
+                                break;
+                            case 2: new EditoraController().updateEditora(conexao);// alterar
+                                break;
+                            case 3: new EditoraController().listarEditora(conexao);// visualizar
+                                break;
+                            case 4: new EditoraController().deleteEditora(conexao);// deletar
+                                break;
+                        }
+                        break;
                     case 3: // Genero
                         op = menu2();
                         switch (op) {
@@ -57,19 +57,19 @@ public class Main {
                                 break;
                         }
                         break;
-//                    case 4: // Cliente
-//                        op = menu2();
-//                        switch (op){
-//                            case 1: new ClienteController().createCliente(con); //incluir
-//                                break;
-//                            case 2: new ClienteController().updateCliente(con);// alterar
-//                                break;
-//                            case 3: new ClienteController().listarCliente(con);// visualizar
-//                                break;
-//                            case 4: new ClienteController().deleteCliente(con);// deletar
-//                                break;
-//                        }
-//                        break;
+                    case 4: // Cliente
+                        op = menu2();
+                        switch (op){
+                            case 1: new ClienteController().createCliente(conexao); //incluir
+                                break;
+                            case 2: new ClienteController().updateCliente(conexao);// alterar
+                                break;
+                            case 3: new ClienteController().listarCliente(conexao);// visualizar
+                                break;
+                            case 4: new ClienteController().deleteCliente(conexao);// deletar
+                                break;
+                        }
+                        break;
                     case 5: //Autor
                         op = menu2();
                         switch (op){
@@ -121,9 +121,9 @@ public class Main {
         System.out.println("");
         System.out.println("Informe o número da opção que desejas executar: ");
 //        System.out.println("1 - Livro");
-//        System.out.println("2 - Editora");
+        System.out.println("2 - Editora");
         System.out.println("3 - Genero");
-//        System.out.println("4 - Clientes");
+        System.out.println("4 - Clientes");
         System.out.println("5 - Autor");
 //        System.out.println("6 - Empréstimos");
 //        System.out.println("7 - Relatórios");
