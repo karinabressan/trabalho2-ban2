@@ -57,7 +57,7 @@ public class Main {
                                 break;
                         }
                         break;
-                    case 4: // Cliente
+                   /* case 4: // Cliente
                         op = menu2();
                         switch (op){
                             case 1: new ClienteController().createCliente(conexao); //incluir
@@ -69,7 +69,7 @@ public class Main {
                             case 4: new ClienteController().deleteCliente(conexao);// deletar
                                 break;
                         }
-                        break;
+                        break; */
                     case 5: //Autor
                         op = menu2();
                         switch (op){

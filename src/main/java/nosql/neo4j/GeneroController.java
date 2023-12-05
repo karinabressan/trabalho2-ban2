@@ -15,14 +15,14 @@ public class GeneroController {
         Scanner input = new Scanner(System.in);
         int sugestao = date.sugerecodigo("codgenero", "Genero", con);
         System.out.println("Insira os seguintes dados para adicionar um novo Genero: sugestão(" + sugestao + ") ");
-        System.out.print("Codigo da Genero: ");
+        System.out.print("Codigo do Genero: ");
         int codigoGenero = input.nextInt();
         System.out.print("genero: ");
         input = new Scanner(System.in);
         String nomeGenero = input.nextLine();
         GeneroBean gb = new GeneroBean(codigoGenero, nomeGenero);
         GeneroModel.create(gb, con);
-        System.out.println("Genero adicionada com sucesso!!");
+        System.out.println("Genero adicionado com sucesso!!");
     }
 
     void listarGenero(Conexao con) throws SQLException {
