@@ -14,19 +14,19 @@ public class Main {
             op = menu();
             try {
                 switch (op) {
-//                    case 1: //Livro
-//                        op = menu2();
-//                        switch (op){
-//                            case 1: new LivroController().createLivro(con); //incluir
-//                                break;
-//                            case 2: new LivroController().updateLivro(con);// alterar
-//                                break;
-//                            case 3: new LivroController().listarLivro(con);// visualizar
-//                                break;
-//                            case 4: new LivroController().deleteLivro(con);// deletar
-//                                break;
-//                        }
-//                        break;
+                    case 1: //Livro
+                        op = menu2();
+                        switch (op){
+                            case 1: new LivroController().createLivro(conexao); //incluir
+                                break;
+                            case 2: new LivroController().updateLivro(conexao);// alterar
+                                break;
+                            case 3: new LivroController().listarLivro(conexao);// visualizar
+                                break;
+                            case 4: new LivroController().deleteLivro(conexao);// deletar
+                                break;
+                        }
+                        break;
                     case 2:// Editora
                         op = menu2();
                         switch (op){
@@ -57,7 +57,7 @@ public class Main {
                                 break;
                         }
                         break;
-                   /* case 4: // Cliente
+                    case 4: // Cliente
                         op = menu2();
                         switch (op){
                             case 1: new ClienteController().createCliente(conexao); //incluir
@@ -69,7 +69,7 @@ public class Main {
                             case 4: new ClienteController().deleteCliente(conexao);// deletar
                                 break;
                         }
-                        break; */
+                        break;
                     case 5: //Autor
                         op = menu2();
                         switch (op){
@@ -120,7 +120,7 @@ public class Main {
         int nret = 99;
         System.out.println("");
         System.out.println("Informe o número da opção que desejas executar: ");
-//        System.out.println("1 - Livro");
+        System.out.println("1 - Livro");
         System.out.println("2 - Editora");
         System.out.println("3 - Genero");
         System.out.println("4 - Clientes");
