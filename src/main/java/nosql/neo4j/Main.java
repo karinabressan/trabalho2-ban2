@@ -82,20 +82,20 @@ public class Main {
                             case 4: new AutorController().deleteAutor(conexao);// deletar
                                 break;
                         }
-//                    case 6: //Emprestimo
-//                        op = menuEmprestimo();
-//                        switch (op){
-//                            case 1: new EmprestimoController().createEmprestimo(con); //incluir
-//                                break;
-//                            case 2: new EmprestimoController().updateEmprestimo(con);// alterar
-//                                break;
-//                            case 3: new EmprestimoController().listarEmprestimo(con);// visualizar
-//                                break;
-//                            case 4: new EmprestimoController().deleteEmprestimo(con);// deletar
-//                                break;
-//                            case 5: new EmprestimoController().devolucaoEmprestimo(con);// deletar
-//                                break;
-//                        }
+                   case 6: //Emprestimo
+                        op = menuEmprestimo();
+                        switch (op){
+                            case 1: new EmprestimoController().createEmprestimo(conexao); //incluir
+                                break;
+                            case 2: new EmprestimoController().updateEmprestimo(conexao);// alterar
+                                break;
+                            case 3: new EmprestimoController().listarEmprestimo(conexao);// visualizar
+                                break;
+                            case 4: new EmprestimoController().deleteEmprestimo(conexao);// deletar
+                                break;
+                            case 5: new EmprestimoController().devolucaoEmprestimo(conexao);// devolução
+                                break;
+                        }
 //                    case 7://relatorios
 //                        op = menuRelatorio();
 //                        switch(op){
@@ -125,7 +125,7 @@ public class Main {
         System.out.println("3 - Genero");
         System.out.println("4 - Clientes");
         System.out.println("5 - Autor");
-//        System.out.println("6 - Empréstimos");
+        System.out.println("6 - Empréstimos");
 //        System.out.println("7 - Relatórios");
         System.out.println("Digite qualquer outro valor para sair");
         System.out.print("Sua opção: ");

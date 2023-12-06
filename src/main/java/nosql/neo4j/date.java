@@ -11,6 +11,31 @@ import java.util.Scanner;
 
 
 public class date {
+
+    public static String validData(){
+        String dataString = new String();
+        Scanner scanner = new Scanner(System.in);
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formato2 = new SimpleDateFormat("yyyy-MM-dd");
+
+        System.out.print(" Digite uma data no formato dd/MM/yyyy: ");
+        if (scanner.hasNextLine()) { // Verifica se há uma próxima linha
+            dataString = scanner.nextLine(); // Lê a linha se houver uma próxima
+            //System.out.println("Você digitou: " + dataString);
+        } else {
+            System.out.println("Nenhuma linha foi digitada.");
+        }
+        try {
+            Date data = formato.parse(dataString);
+            String datapronta = formato2.format(data);
+            scanner.close();
+            return datapronta;
+        } catch (ParseException e) {
+            System.err.println("Formato de data inválido. Certifique-se de usar o formato dd/MM/yyyy.");
+            scanner.close();
+            return "-1";
+        }
+    }
     public static Date dataTeclado() {
         Date data1 = new Date();
         String dataString = new String();
