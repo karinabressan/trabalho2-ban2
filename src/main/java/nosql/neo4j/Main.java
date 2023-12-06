@@ -99,8 +99,8 @@ public class Main {
                     case 7://relatorios
                         op = menuRelatorio();
                         switch(op){
-                           // case 1: new RelGeneroController().relatoriogenero(conexao);
-                             //   break;
+                           case 1: new RelGeneroController().relatoriogenero(conexao);
+                                break;
                             case 2: new RelClienteController().relatoriocliente(conexao);
                                 break;
                            // case 3: new Relatorio3Controller().relatoriolivro(conexao);
