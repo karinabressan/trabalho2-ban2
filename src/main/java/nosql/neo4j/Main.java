@@ -70,7 +70,7 @@ public class Main {
                                 break;
                         }
                         break;
-                    case 5: //Autor
+                    case 5: //Autor7
                         op = menu2();
                         switch (op){
                             case 1: new AutorController().createAutor(conexao); //incluir
