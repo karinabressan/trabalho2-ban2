@@ -96,16 +96,16 @@ public class Main {
                             case 5: new EmprestimoController().devolucaoEmprestimo(conexao);// devolução
                                 break;
                         }
-//                    case 7://relatorios
-//                        op = menuRelatorio();
-//                        switch(op){
-//                            case 1: new RelGeneroController().relatoriogenero(con);
-//                                break;
-//                            case 2: new RelClienteController().relatoriocliente(con);
-//                                break;
-//                            case 3: new Relatorio3Controller().relatoriolivro(con);
-//                                break;
-//                        }
+                    case 7://relatorios
+                        op = menuRelatorio();
+                        switch(op){
+                           // case 1: new RelGeneroController().relatoriogenero(conexao);
+                             //   break;
+                            case 2: new RelClienteController().relatoriocliente(conexao);
+                                break;
+                           // case 3: new Relatorio3Controller().relatoriolivro(conexao);
+                            //    break;
+                        }
                 }
             } catch (SQLException ex) {
                 //ex.printStackTrace();
@@ -126,7 +126,7 @@ public class Main {
         System.out.println("4 - Clientes");
         System.out.println("5 - Autor");
         System.out.println("6 - Empréstimos");
-//        System.out.println("7 - Relatórios");
+        System.out.println("7 - Relatórios");
         System.out.println("Digite qualquer outro valor para sair");
         System.out.print("Sua opção: ");
         Scanner input = new Scanner(System.in);

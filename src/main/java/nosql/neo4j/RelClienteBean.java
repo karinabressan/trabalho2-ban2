@@ -2,35 +2,35 @@ package nosql.neo4j;
 
 import java.util.Date;
 
-/*
+
 public class RelClienteBean {
-    private int codCliente;
+    private int codcliente; 
     private String cliente;
     private String titulo; 
     private String autor;
     private String editora;
     private String genero;
-    private Date dataEmprestimo;
+    private Date dataemprestimo;
     private int dias; 
-    private Date dataDevolucao;
+    private Date datadevolucao; 
     
-    public RelClienteBean(int codCliente, String cliente, String titulo, String autor, String editora, String genero, Date dataEmprestimo, int dias, Date dataDevolucao){
-        this.codCliente = codCliente;
+    public RelClienteBean(int codcliente, String cliente, String titulo, String autor, String editora, String genero, Date dataemprestimo, int dias, Date datadevolucao){
+        this.codcliente = codcliente;
         this.cliente = cliente; 
         this.titulo = titulo; 
         this.autor = autor;
         this.editora = editora;
-        this.dataEmprestimo = dataEmprestimo;
+        this.dataemprestimo = dataemprestimo;
         this.dias = dias;
-        this.dataDevolucao = dataDevolucao;
+        this.datadevolucao = datadevolucao; 
     }
     
     public int getCodCliente() {
-        return codCliente;
+        return codcliente;
     }
 
-    public void setCodCliente(int codCliente) {
-        this.codCliente = codCliente;
+    public void setcodcliente(int codcliente) {
+        this.codcliente = codcliente;
     }
     public int getDias() {
         return dias;
@@ -76,24 +76,23 @@ public class RelClienteBean {
     }
     
     public Date getDataEmprestimo() {
-        return dataEmprestimo;
+        return dataemprestimo;
     }
 
-    public void setDataEmprestimo(Date dataEmprestimo) {
-        this.dataEmprestimo = dataEmprestimo;
+    public void setDataEmprestimo(Date dataemprestimo) {
+        this.dataemprestimo = dataemprestimo;
     }
 
     public Date getDataDevReal() {
-        return dataDevolucao;
+        return datadevolucao;
     }
 
-    public void setDataDevReal(Date dataDevolucao) {
-        this.dataDevolucao = dataDevolucao;
+    public void setDataDevReal(Date datadevolucao) {
+        this.datadevolucao = datadevolucao;
     }
     public String toString(){
-        return "Código cliente: "+codCliente+" | Cliente: "+cliente+" | Livro: "+titulo+" | Autor: "
+        return "Código cliente: "+codcliente+" | Cliente: "+cliente+" | Livro: "+titulo+" | Autor: "
                 +autor+" | Editora: "+editora+" | Genero: "+genero+" | Data do emprestimo: "
-                +dataEmprestimo+" | Dias com o livro: "+dias+" | Data devolução: "+dataDevolucao;
+                +dataemprestimo+" | Dias com o livro: "+dias+" | Data devolução: "+datadevolucao;
     }
 }
-*/
