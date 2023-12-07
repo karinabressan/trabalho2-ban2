@@ -12,6 +12,6 @@ O backup do banco (data-importer-2023-12-07.zip) pode ser importado na opção I
 que será gerada para a instância do seu banco no Neo4J. No arquivo Conexao.java (em:\src\main\java\nosql\neo4j), alterar o conteúdo da variável URL para a URL da sua instância do banco (NEO4J_URI).
 4. Clonar o repositório do projeto e executar o programa principal (em: src\main\java\nosql\neo4j).
 
-
 ------
+![Esquema conceitual da Biblioteca](trabalho2-ban2/esquema_conceitual_biblioteca.JPG)
 
