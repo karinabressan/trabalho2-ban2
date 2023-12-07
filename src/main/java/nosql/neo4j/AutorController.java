@@ -2,7 +2,6 @@ package nosql.neo4j;
 
 import org.neo4j.driver.exceptions.ClientException;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.*;
 

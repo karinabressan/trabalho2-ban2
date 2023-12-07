@@ -1,8 +1,6 @@
 package nosql.neo4j;
 
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.*;
 

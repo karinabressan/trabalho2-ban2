@@ -2,10 +2,6 @@ package nosql.neo4j;
 
 import org.neo4j.driver.EagerResult;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -36,23 +32,6 @@ public class EditoraModel {
                 """).withParameters(Map.of("codeditora",codeditora)).execute();
         return result.records().size();
     }
-
-   /* public static boolean exists(int codeditora, Conexao con) throws SQLException {
-        String query = "SELECT COUNT(*) FROM editora WHERE codeditora = ?";
-
-        try (PreparedStatement statement = con.prepareStatement(query)) {
-            statement.setInt(1, codeditora);
-
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    int count = resultSet.getInt(1);
-                    return count > 0;
-                }
-            }
-        }
-
-        return false;
-    }*/
 
     public static int update(EditoraBean novaEditora, Conexao con) {
         EagerResult result = con.getExecutableQuery("""

@@ -1,10 +1,6 @@
 package nosql.neo4j;
 
-import org.neo4j.driver.*;
-import org.neo4j.driver.Record;
-
 import java.util.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 

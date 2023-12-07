@@ -2,8 +2,6 @@ package nosql.neo4j;
 
 import org.neo4j.driver.EagerResult;
 
-import java.sql.*;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 

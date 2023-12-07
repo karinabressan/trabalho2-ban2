@@ -40,34 +40,6 @@ public class Conexao {
         return this.driver.executableQuery(query).withConfig(this.queryConfig);
     }
 
-//    public Map<String, Object> graph(int limit) {
-//        var result = query(
-//                """
-//                  MATCH (m:Movie)<-[:ACTED_IN]-(a:Person)
-//                  RETURN m.title as movie, collect(a.name) as cast
-//                  LIMIT $limit""",
-//                Map.of("limit", limit));
-//
-//        var nodes = new ArrayList<>();
-//        var rels = new ArrayList<Map<String, Object>>();
-//        var i = 0;
-//        for (var row : result) {
-//            nodes.add(Map.of("title", row.get("movie"), "label", "movie"));
-//            var target = i;
-//            i++;
-//            for (Object name : (Collection<?>) row.get("cast")) {
-//                var actor = Map.of("title", name, "label", "actor");
-//                var source = nodes.indexOf(actor);
-//                if (source == -1) {
-//                    nodes.add(actor);
-//                    source = i++;
-//                }
-//                rels.add(Map.of("source", source, "target", target));
-//            }
-//        }
-//        return Map.of("nodes", nodes, "links", rels);
-//    }
-
     public List<Map<String, Object>> query(String query) {
         if (query == null || query.trim().isEmpty()) return Collections.emptyList();
         return driver.executableQuery(query)
