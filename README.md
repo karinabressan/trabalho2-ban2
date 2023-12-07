@@ -13,5 +13,4 @@ que será gerada para a instância do seu banco no Neo4J. No arquivo Conexao.jav
 4. Clonar o repositório do projeto e executar o programa principal (em: src\main\java\nosql\neo4j).
 
 ------
-![Esquema conceitual da Biblioteca](trabalho2-ban2/esquema_conceitual_biblioteca.JPG)
 
