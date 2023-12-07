@@ -101,10 +101,10 @@ public class Main {
                         switch(op){
                            case 1: new RelGeneroController().relatoriogenero(conexao);
                                 break;
-                            case 2: new RelClienteController().relatoriocliente(conexao);
+                           case 2: new RelClienteController().relatoriocliente(conexao);
                                 break;
-                           // case 3: new Relatorio3Controller().relatoriolivro(conexao);
-                            //    break;
+                           case 3: new Relatorio3Controller().relatoriolivro(conexao);
+                               break;
                         }
                 }
             } catch (SQLException ex) {
